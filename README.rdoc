@@ -1,0 +1,2 @@
+This is a plain Rails app with Angular on the front end.
+It was created for a video demo, and can serve as a base to build a more complex app.
