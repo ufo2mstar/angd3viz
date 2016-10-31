@@ -1,0 +1,8 @@
+source,target,value
+Acc A,pos a,2
+Acc A,pos b,2
+Acc B,pos b,2
+pos b,Fac 1,2
+pos a,Fac 1,2
+pos b,pos a,2
+Acc C,Fac 1,4
