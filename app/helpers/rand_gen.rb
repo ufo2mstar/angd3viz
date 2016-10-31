@@ -2,7 +2,7 @@ require 'require_all'
 require_all 'rand_utils/*.rb'
 require 'json'
 
-RandSeed.germinate 12345
+RandSeed.germinate 1234
 
 clients = 5
 accounts = 10
@@ -17,7 +17,7 @@ module RandAM
   def create name, num, n_dig = 10, alpha_numeric_flag = false
     # num.times.map { "#{name}-#{rand(num).to_s.rjust(n_dig, '0')}" }
     num.times.map {
-      rnd_num = RandomString.(alpha_numeric_flag ? alpha_num_gen : num_gen) n_dig
+      rnd_num = alpha_numeric_flag ? RandomString.alpha_num_gen(n_dig) : RandomString.num_gen(n_dig)
       "#{name}-#{(rnd_num)}"
     }
   end
@@ -40,9 +40,9 @@ end
 
 c = RandAM.create "ECI", clients, 10
 a = RandAM.create "ACC", accounts, 8
-p = RandAM.create "pos", positions, 9, 'alpha'
+p = RandAM.create "pos", positions, 8, 'alpha'
 f = RandAM.create "Fac", facilities, 10
-o = RandAM.create "obg", obligations, 9, 'alpha'
+o = RandAM.create "obg", obligations, 8, 'alpha'
 
 # nodes = []
 nodes = c + a + p + f + o
