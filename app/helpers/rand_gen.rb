@@ -2,7 +2,7 @@ require 'require_all'
 require_all 'rand_utils/*.rb'
 require 'json'
 
-RandSeed.germinate 1234
+RandSeed.germinate 123
 
 clients = 5
 accounts = 10

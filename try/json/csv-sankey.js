@@ -1,5 +1,5 @@
 
-var units = "Widgets";
+var units = "Million";
 
 var margin = {top: 10, right: 10, bottom: 10, left: 10},
     width = 1200 - margin.left - margin.right,
