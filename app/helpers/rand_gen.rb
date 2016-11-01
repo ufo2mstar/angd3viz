@@ -1,14 +1,20 @@
 require 'require_all'
 require_all 'rand_utils/*.rb'
 require 'json'
+require 'csv'
+ENV["color"] = 'true'
 
-RandSeed.germinate 123
+seed_id = 12345
 
-clients = 5
-accounts = 10
+clients = 3
+accounts = 7
 positions = 7
-facilities = 3
-obligations = 10
+facilities = 2
+obligations = 6
+RandSeed.germinate seed_id
+
+filename = "fac_#{seed_id}_#{clients}-#{accounts}-#{positions}-#{facilities}-#{obligations}"
+p "Generating #{filename} ->",:bl
 
 module RandAM
   extend self
@@ -58,5 +64,17 @@ out = {}
 out['links'] = links.flatten
 out['nodes'] = nodes
 
+# csv make
+csv_title = out['links'].first.keys.to_csv
+csv_rows = ""
+out['links'].each { |row_hsh| csv_rows << row_hsh.values.to_csv }
+csv_out = csv_title+csv_rows
+
 puts out.to_json
-File.open('C:\Users\kyu-homebase\repos\angd3viz\try\json\sankeygreenhouse.json', 'w') { |f| f.write(out.to_json) }
+puts csv_out
+
+loc = File.dirname(__FILE__)+"/../../"
+p "Generated ->",:g
+File.open(loc+"try/json/#{filename}.js", 'w') { |f| f.write(out.to_json); p "#{filename}.js",:y }
+File.open(loc+"try/csv/#{filename}.csv", 'w') { |f| f.write(csv_out) ; p "#{filename}.csv",:g }
+
