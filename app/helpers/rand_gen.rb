@@ -4,17 +4,19 @@ require 'json'
 require 'csv'
 ENV["color"] = 'true'
 
-seed_id = 12345
+seed_id = 123457
+rnd =-> n { (1..n).to_a.sample }
+clients, accounts, positions, facilities, obligations = [rnd[5], rnd[10], rnd[10], rnd[5], rnd[10]]
 
-clients = 3
-accounts = 7
-positions = 7
-facilities = 2
-obligations = 6
+clients ||= 3
+accounts ||= 7
+positions ||= 7
+facilities ||= 2
+obligations ||= 6
 RandSeed.germinate seed_id
 
 filename = "fac_#{seed_id}_#{clients}-#{accounts}-#{positions}-#{facilities}-#{obligations}"
-p "Generating #{filename} ->",:bl
+p "Generating #{filename} ->", :bl
 
 module RandAM
   extend self
@@ -74,7 +76,7 @@ puts out.to_json
 puts csv_out
 
 loc = File.dirname(__FILE__)+"/../../"
-p "Generated ->",:g
-File.open(loc+"try/json/#{filename}.js", 'w') { |f| f.write(out.to_json); p "#{filename}.js",:y }
-File.open(loc+"try/csv/#{filename}.csv", 'w') { |f| f.write(csv_out) ; p "#{filename}.csv",:g }
+p "Generated ->", :g
+File.open(loc+"try/json/#{filename}.js", 'w') { |f| f.write(out.to_json); p "#{filename}.js", :y }
+File.open(loc+"try/csv/#{filename}.csv", 'w') { |f| f.write(csv_out); p "#{filename}.csv", :g }
 
