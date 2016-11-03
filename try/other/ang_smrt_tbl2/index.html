@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+  <head>
+    <link data-require="bootstrap-css@3.2.0" data-semver="3.2.0" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <script data-require="angular.js@1.2.21" data-semver="1.2.21" src="https://code.angularjs.org/1.2.21/angular.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+      <script src="lrDragNDrop.js"></script>
+     <script src="smart-table.debug.js"></script>
+  </head>
+
+  <body ng-controller="mainCtrl">
+    <div class="table-container">
+      <table st-table="rowCollection" class="table table-striped">
+	<thead>
+	<tr>
+		<th lr-drag-src="headers" lr-drop-target="headers" ng-repeat="col in columns" st-sort="{{col}}">{{col}}</th>
+	</tr>
+	<tr>
+		<th>
+			<input st-search="firstName" placeholder="search for firstname" class="input-sm form-control" type="search"/>
+		</th>
+		<th colspan="4">
+			<input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+		</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="row in rowCollection">
+		<td ng-repeat="col in columns">{{row[col]}}</td>
+	</tr>
+	</tbody>
+</table>
+</div>
+<div ng-show="isLoading" class="loading-indicator"></div>
+</body>
+
+</html>
