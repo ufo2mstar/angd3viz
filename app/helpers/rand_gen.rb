@@ -4,7 +4,8 @@ require 'json'
 require 'csv'
 ENV["color"] = 'true'
 
-seed_id = 123457
+# seed_id = 123457
+seed_id = RandomString.num_gen(5).to_i
 rnd =-> n { (1..n).to_a.sample }
 clients, accounts, positions, facilities, obligations = [rnd[5], rnd[10], rnd[10], rnd[5], rnd[10]]
 
