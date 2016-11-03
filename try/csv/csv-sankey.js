@@ -26,31 +26,10 @@ var sankey = d3.sankey()
 
 var path = sankey.link();
 
-filenames = [
-    "fac_1234_5-10-7-3-10.csv",
-    "fac_12345_3-7-7-2-6.csv",
-    "fac_12345_5-10-7-3-10.csv",
-    "fac_123456_3-7-7-2-6.csv",
-    "fac_123457_2-10-8-1-3.csv",
-    "fac_123457_3-7-7-2-6.csv"
-]
-;
-
-var i = 0;
-d3.select('#switch').on('click', function () {
-    console.log(i,filenames[i]);
-    if (i == filenames.length-1)
-        i = 0;
-    var filename = filenames[i += 1];
-    svg.selectAll("*").remove();
-    draw(filename);
-});
-
-draw(filenames[i]);
 
 function draw(filename) {
 
-// load the data (using the timelyportfolio csv method)
+// load the data
     d3.csv(filename, function (error, data) {
 
         //set up graph in same style as original example but empty

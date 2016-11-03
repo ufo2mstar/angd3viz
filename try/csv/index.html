@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<head>
+    <!--Base template stuff-->
+    <!--<link data-require="bootstrap@*" data-semver="4.0.0-alpha.2" rel="stylesheet"-->
+          <!--href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css"/>-->
+    <!--<script data-require="bootstrap@*" data-semver="4.0.0-alpha.2"-->
+            <!--src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>-->
+
+    <script data-require="jquery@*" data-semver="3.0.0"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+    <link data-require="bootstrap-css@3.3.6" data-semver="3.3.6" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />
+    <script data-require="bootstrap@*" data-semver="3.3.6" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!--<script data-require="angular.js@*" data-semver="2.0.0"-->
+    <!--src="https://code.angularjs.org/2.0.0-snapshot/angular2.js"></script>-->
+    <!--<script data-require="angular-route@*" data-semver="1.5.8"-->
+    <!--src="https://code.angularjs.org/1.5.8/angular-route.js"></script>-->
+    <!--<script data-require="ui-bootstrap@*" data-semver="2.2.0"-->
+    <!--src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.2.0.js"></script>-->
+    <link rel="stylesheet" href="sankey.css"/>
+</head>
 <title>d3Viz csv expt</title>
 <style>
 
-    .node rect {
-        cursor: move;
-        fill-opacity: .9;
-        shape-rendering: crispEdges;
-    }
-
-    .node text {
-        pointer-events: none;
-        text-shadow: 0 1px 0 #fff;
-    }
-
-    .link {
-        fill: none;
-        stroke: #000;
-        stroke-opacity: .2;
-    }
-
-    .link:hover {
-        stroke-opacity: .5;
-    }
-
 </style>
 <body>
-<button id="switch">cycle through data</button>
+<button id="rand">rand draw</button>
+<select id="list"></select>
+<button id="render">Draw!</button>
 
 <p id="chart">
-
+    <!--D3 stuff-->
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="sankey.js"></script>
     <script src="csv-sankey.js"></script>
-
+    <script src="script.js"></script>
 
 </body>
 </html>
