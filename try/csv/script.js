@@ -29,17 +29,21 @@ $(document).ready(function () {
     ];
 
     // fill selectlist #list with the filenames
-    (function () {
-        $.each(filenames, function (val, text) {
-            // val - index.. text - ary element val
-            $('#list').append($('<option></option>').val(val).html(text))
-        })
-    }());
+    $.each(filenames, function (val, text) {
+        var o = new Option(val, text);
+        // jquerifying the DOM object 'o' to use the jquery methods
+        $(o).val(val).html(text);
+        $("#list").append(o);
+        // val - index.. text - ary element val.. oneliner!
+        // $('#list').append($('<option></option>').val(val).html(text));
+    });
 
-// var o = new Option(filenames);
-// // jquerify the DOM object 'o' so we can use the html method
-// $(o).html("option text");
-// $("#list").append(o);
+    // calling the d3 render method..
+    function d3draw(filename) {
+        console.log("Drawing " + filename);
+        draw(filename);
+        svg.selectAll("*").remove(); // clearing
+    }
 
     // setting last_rand as a rand display flag
     var last_rand = 0;
@@ -47,8 +51,8 @@ $(document).ready(function () {
     // render a random file!
     d3.select('#rand').on('click', function () {
         ary_len = filenames.length;
-        do{ // to make sure we are not repeating previous rand
-        var this_rand = Math.floor(Math.random() * ary_len);
+        do { // to make sure we are not repeating previous rand
+            var this_rand = Math.floor(Math.random() * ary_len);
         } while (this_rand == last_rand);
         var rand_file = filenames[this_rand];
         $('#list').val(this_rand);
@@ -61,12 +65,13 @@ $(document).ready(function () {
         d3draw(selected_file);
     });
 
+    // render on select list value change itself!
+    $('#list').change(function () {
+            console.log("change in list to " + filenames[$(this).val()]);
+            $('#render').click()
+        }
+    );
+
+    // first time rendering - donno why but, i always like doing it this way..
     $('#rand').click();
-
-    function d3draw(filename) {
-        console.log("Drawing " + filename);
-        draw(filename);
-        svg.selectAll("*").remove(); // clearing
-    }
-
 });

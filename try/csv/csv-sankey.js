@@ -67,7 +67,7 @@ function draw(filename) {
         sankey
             .nodes(graph.nodes)
             .links(graph.links)
-            .layout(200);
+            .layout(100);
 
 // add in the linkages
         var link = svg.append("g").selectAll(".link")
