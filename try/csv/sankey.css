@@ -7,15 +7,20 @@
 
 .node text {
     pointer-events: none;
-    text-shadow: 0 1px 0 #fff;
+    /*text-shadow: 0 1px 0 #fff;*/
+    /*text-shadow: 2px 1px 1px #fff;*/
+    /*text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;*/
+    /*text-shadow: -4px 0 white, 0 4px white, 4px 0 white, 0 -4px white;*/
+    /*text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;*/
+    /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
 }
 
-.link {
-    fill: none;
-    stroke: #000;
-    stroke-opacity: .2;
-}
+/*.link {*/
+    /*fill: none;*/
+    /*!*stroke: #000;*!*/
+    /*stroke-opacity: .2;*/
+/*}*/
 
-.link:hover {
-    stroke-opacity: .5;
-}
+/*.link:hover {*/
+    /*stroke-opacity: .5;*/
+/*}*/
